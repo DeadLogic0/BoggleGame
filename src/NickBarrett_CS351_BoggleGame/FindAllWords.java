@@ -15,7 +15,7 @@ public class FindAllWords
   private boolean[][] checkedCells;
   private ArrayList<Character> word = new ArrayList<Character>();
 
-  public FindAllWords(BoggleDictionary dictionary, Character[][] board)
+  public FindAllWords(BoggleDictionary dictionary, LetterTile[][] board)
   {
     this.dictionary = dictionary;
     boardsize = board.length;
@@ -25,7 +25,7 @@ public class FindAllWords
     {
       for(int col = 0; col < boardsize; col++)
       {
-        charboard[row][col] = board[row][col];//.getChar();
+        charboard[row][col] = board[row][col].getChar();
         checkedCells[row][col] = false;
       }
     }
@@ -70,6 +70,11 @@ public class FindAllWords
     returnboolean[1] = false;
     checkedCells[row][col] = false;
     word.remove(word.size()-1);
+  }
+
+  public boolean containsWord(String word)
+  {
+    return foundWords.containsWord(word,0);
   }
 
 }

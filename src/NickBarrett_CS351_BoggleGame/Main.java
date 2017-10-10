@@ -8,37 +8,27 @@ public class Main {
     public static void main(String[] args) throws IOException
     {
         BoggleDictionary dictionary = new BoggleDictionary();
-//        ArrayList<Character> word = new ArrayList<Character>();
-//        word.add('A');
-//      word.add('X');
-//      word.add('B');
-//      word.add('Z');
-//      boolean[] returnbool = dictionary.containsWordCont(word);
-//      System.out.println("booleans:"+returnbool[0]+","+returnbool[1]);
-//        FindAllWords findwords = new FindAllWords(dictionary,new Character[][]{
-//                {'A','X','B','L'},
-//                {'N','T','R','N'},
-//                {'W','U','S','E'},
-//                {'C','Q','S','N'}});
-      System.out.println("dictionary finished");
-      FindAllWords findwords = new FindAllWords(dictionary,new Character[][]{
-              {'H','E','L','L','O'},
-              {'P','E','W','N','D'},
-              {'E','E','A','O','Y'},
-              {'N','S','L','T','E'},
-              {'T','A','T','S','O'}
-
-      });
-//        Scanner input = new Scanner(System.in);
-//        System.out.println("Enter any word to check if it is present in the dictionary.");
-//        System.out.println("!!input must not contain any spaces!!");
-//        System.out.println("To quit enter 'quit0'");
-//        String inputword = input.nextLine();
-//        while(!inputword.equals("quit0"))
-//        {
-//            System.out.println(dictionary.containsWord(inputword));
-//            inputword = input.nextLine();
-//        }
+        BoggleBoard board = new BoggleBoard(5);
+        System.out.println("dictionary finished");
+        board.displayBoard();
+        //System.out.println("board generated");
+        FindAllWords findwords = new FindAllWords(dictionary,board.getBoard());
+        Scanner input = new Scanner(System.in);
+        System.out.println("Enter any word you find on the board and if it is a word and exists it will be true.");
+        System.out.println("!!input must not contain any spaces!!");
+        System.out.println("To quit enter 'quit0'");
+        board.displayBoard();
+        System.out.println("\n\n");
+        String inputword = input.nextLine();
+        board.displayBoard();
+        System.out.println("\n\n");
+        while(!inputword.equals("quit0"))
+        {
+            System.out.println(findwords.containsWord(inputword));
+            board.displayBoard();
+            System.out.println("\n\n");
+            inputword = input.nextLine();
+        }
         System.out.println("Program finished");
     }
 }

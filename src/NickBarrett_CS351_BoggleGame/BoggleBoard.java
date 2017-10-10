@@ -62,7 +62,7 @@ public class BoggleBoard
           if(adjrow >= 0 && adjrow < boardsize && adjcol >= 0 && adjcol < boardsize)
           {
             board[adjrow][adjcol] = new LetterTile('U');
-            break;
+            return;
           }//end in bounds if
         }//end loop
       }//end chance if
@@ -73,5 +73,21 @@ public class BoggleBoard
   {
     return board;
   }
+
+  public void displayBoard()
+  {
+    String rowstr = "";
+    for(int row = 0; row < boardsize; row++)
+    {
+      for(int col = 0; col < boardsize; col++)
+      {
+        rowstr = rowstr+" "+board[row][col].getChar();
+      }
+      System.out.println(rowstr);
+      rowstr = "";
+    }
+  }
 }
+
+
 
