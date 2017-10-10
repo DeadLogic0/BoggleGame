@@ -1,6 +1,7 @@
 package NickBarrett_CS351_BoggleGame;
 
 import java.io.*;
+import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
 
@@ -8,6 +9,7 @@ public class BoggleDictionary
 {
   private BoggleDictionaryTree dictionary = new BoggleDictionaryTree();
   private String DICTIONARY = "OpenEnglishWordList.txt";
+
 
   public BoggleDictionary() throws IOException
   {
@@ -30,9 +32,15 @@ public class BoggleDictionary
     return dictionary.containsWord(word, 0);
   }
 
+  public boolean[] containsWordCont(Collection<Character> word)
+  {
+    return dictionary.containsWordContinuous(word.iterator());
+  }
+
   public boolean containsWord(Collection<Character> word)
   {
-    Iterator wordIterator = word.iterator();
+    Iterator<Character> wordIterator = word.iterator();
     return dictionary.containsWord(wordIterator);
   }
+
 }

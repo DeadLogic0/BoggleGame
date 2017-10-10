@@ -31,8 +31,8 @@ public class BoggleDictionaryTree
 */
   public void addWord(Iterator<Character> word)
   {
-    Character inputchar = word.next();
-    if(!characterMap.containsKey(inputchar))
+    Character inputchar = Character.toUpperCase(word.next());
+    if(word.hasNext() && !characterMap.containsKey(inputchar))
     {
       characterMap.put(inputchar, new BoggleDictionaryTree());
     }
@@ -41,7 +41,7 @@ public class BoggleDictionaryTree
       wordMap.add(inputchar);
       return;
     }
-    else
+    else if(word.hasNext())
     {
       characterMap.get(inputchar).addWord(word);
     }
@@ -49,9 +49,9 @@ public class BoggleDictionaryTree
 
   public void addWord(String word, int pos)
   {
-    Character inputchar = word.charAt(pos);
+    Character inputchar = Character.toUpperCase(word.charAt(pos));
     pos++;
-    if(!characterMap.containsKey(inputchar))
+    if(word.length() != pos && !characterMap.containsKey(inputchar))
     {
       characterMap.put(inputchar, new BoggleDictionaryTree());
     }
@@ -71,39 +71,53 @@ public class BoggleDictionaryTree
   *character is removed
   *@return returns true when last letter is found in the word array
   */
-  public boolean containsWord(Iterator<LetterTile> word)
+  public boolean containsWord(Iterator<Character> word)
   {
-    Character letter = word.next().getChar();
-    if(characterMap.containsKey(letter))
+    Character letter = Character.toUpperCase(word.next());
+    if(word.hasNext() && characterMap.containsKey(letter))
     {
-      if(!word.hasNext() && wordMap.contains(letter))
-      {
-        return true;
-      }
-      else if(word.hasNext())
-      {
-        return characterMap.get(letter).containsWord(word);
-      }
+      return characterMap.get(letter).containsWord(word);
+    }
+    else if(!word.hasNext() && wordMap.contains(letter))
+    {
+      return true;
     }
     return false;
   }
+
+
 
   public boolean containsWord(String word, int pos)
   {
-    Character letter = word.charAt(pos);
+    Character letter = Character.toUpperCase(word.charAt(pos));
     pos++;
-    if(characterMap.containsKey(letter))
+    if(word.length() > pos && characterMap.containsKey(letter))
     {
-      if(word.length() == pos && wordMap.contains(letter))
-      {
-        return true;
-      }
-      else if(word.length() > pos)
-      {
-        return characterMap.get(letter).containsWord(word, pos);
-      }
+      return characterMap.get(letter).containsWord(word,pos);
+    }
+    else if(word.length() == pos && wordMap.contains(letter))
+    {
+      return true;
     }
     return false;
   }
 
+  public boolean[] containsWordContinuous(Iterator<Character> word)
+  {
+    Character letter = Character.toUpperCase(word.next());
+    if(word.hasNext() && characterMap.containsKey(letter))
+    {
+      return characterMap.get(letter).containsWordContinuous(word);
+    }
+    else if(word.hasNext()) return new boolean[]{false,true};
+    else if(!word.hasNext() && wordMap.contains(letter) && characterMap.isEmpty())
+    {
+      return new boolean[]{true, true};
+    }
+    else if(!word.hasNext() && wordMap.contains(letter))
+    {
+      return new boolean[]{true, false};
+    }
+    return new boolean[]{false, false};
+  }
 }

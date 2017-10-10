@@ -4,7 +4,7 @@ public class LetterTile
 {
   private Character letter = null;
 
-  public void LetterTile(Character letter)
+  public  LetterTile(Character letter)
   {
     if(letter != null) this.letter = letter;
   }
