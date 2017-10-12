@@ -1,5 +1,8 @@
 package NickBarrett_CS351_BoggleGame;
 
+import javafx.scene.image.Image;
+import javafx.scene.shape.Rectangle;
+
 import java.util.ArrayList;
 import java.util.Random;
 
@@ -38,7 +41,7 @@ public class BoggleBoard
           tempchar = LETTERSET[rand.nextInt(LETTERSETSIZE)];
         }//end while
         lettercounts[tempchar-65]++;
-        board[row][col] = new LetterTile(tempchar);
+        board[row][col] = new LetterTile(tempchar,row,col);
         if(tempchar.equals('Q'))
         {
           qpositions.add(new Integer[]{row,col});
@@ -61,7 +64,7 @@ public class BoggleBoard
           adjcol = col+COLMODS[randomizedloc];
           if(adjrow >= 0 && adjrow < boardsize && adjcol >= 0 && adjcol < boardsize)
           {
-            board[adjrow][adjcol] = new LetterTile('U');
+            board[adjrow][adjcol] = new LetterTile('U',adjrow,adjcol);
             return;
           }//end in bounds if
         }//end loop
@@ -69,9 +72,17 @@ public class BoggleBoard
     }//end check empty if
   }//end new game method
 
-  public LetterTile[][] getBoard()
+  public Character[][] getBoard()
   {
-    return board;
+    Character[][] returnboard = new Character[boardsize][boardsize];
+    for(int row = 0; row < boardsize; row++)
+    {
+      for(int col = 0; col < boardsize; col++)
+      {
+        returnboard[row][col] = board[row][col].getChar();
+      }
+    }
+    return returnboard;
   }
 
   public void displayBoard()
@@ -86,6 +97,19 @@ public class BoggleBoard
       System.out.println(rowstr);
       rowstr = "";
     }
+  }
+
+  public Rectangle[][] getDisplay()
+  {
+    Rectangle[][] returnboard = new Rectangle[boardsize][boardsize];
+    for(int row = 0; row < boardsize; row++)
+    {
+      for(int col = 0; col < boardsize; col++)
+      {
+        returnboard[row][col] = board[row][col].getDisplay();
+      }
+    }
+    return returnboard;
   }
 }
 
