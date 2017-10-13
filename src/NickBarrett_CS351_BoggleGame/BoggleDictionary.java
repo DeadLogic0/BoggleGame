@@ -8,13 +8,14 @@ package NickBarrett_CS351_BoggleGame;
  */
 
 import java.io.*;
+import java.net.URL;
 import java.util.Collection;
 import java.util.Iterator;
 
 public class BoggleDictionary
 {
   private BoggleDictionaryTree dictionary = new BoggleDictionaryTree();
-  private String DICTIONARY = "OpenEnglishWordList.txt";
+  private InputStream DICTIONARY = getClass().getResourceAsStream("/OpenEnglishWordList.txt");
 
   /**
    * constructor which reads the dictionary file into the custom data structure
@@ -25,7 +26,7 @@ public class BoggleDictionary
     BufferedReader in = null ;
     try {
       String line ;
-      in = new BufferedReader ( new FileReader (DICTIONARY));
+      in = new BufferedReader ( new InputStreamReader (DICTIONARY,"UTF-8"));
       while (( line = in. readLine ()) != null )
       {
         //System.out.println(line);

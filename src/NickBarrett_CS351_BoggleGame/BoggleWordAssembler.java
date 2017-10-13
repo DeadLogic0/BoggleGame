@@ -42,7 +42,7 @@ public class BoggleWordAssembler
     int adjcol, adjrow;
     Integer[] tempcharloc = new Integer[]{row,col};
     if(Arrays.equals(tempcharloc,charLocs.peekFirst())) return 1;
-    else if(charLocs.isEmpty())
+    else if(charLocs.isEmpty() && !charLocs.stream().anyMatch(x -> Arrays.equals(x,tempcharloc)))
     {
       charLocs.push(tempcharloc);
       word.add(board[row][col]);
@@ -52,7 +52,7 @@ public class BoggleWordAssembler
     {
       adjrow = charLocs.peek()[0] + ROWMODS[loopone];
       adjcol = charLocs.peek()[1] + COLMODS[loopone];
-      if ((adjrow == row && adjcol == col && !charLocs.contains(tempcharloc)))
+      if ((adjrow == row && adjcol == col && !charLocs.stream().anyMatch(x -> Arrays.equals(x,tempcharloc))))
       {
         charLocs.push(tempcharloc);
         word.add(board[row][col]);

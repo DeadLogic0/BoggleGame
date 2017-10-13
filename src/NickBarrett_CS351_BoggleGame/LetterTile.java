@@ -35,7 +35,7 @@ public class LetterTile
     else return;
     int xpos = row*(chardisplaysize+buffer)+buffer;
     int ypos = col*(chardisplaysize+buffer)+buffer;
-    Image image = new Image("file:../../resources/"+letter+".png",chardisplaysize,chardisplaysize,false,false);
+    Image image = new Image(getClass().getResource("resources/"+letter+".png").toString(),chardisplaysize,chardisplaysize,false,false);
     ImagePattern imagepattern = new ImagePattern(image);
     chardisplay = new Rectangle(xpos,ypos,image.getWidth(),image.getHeight());
     chardisplay.setFill(imagepattern);

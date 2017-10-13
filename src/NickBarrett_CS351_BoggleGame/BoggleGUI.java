@@ -67,8 +67,8 @@ public class BoggleGUI extends Application implements EventHandler<MouseEvent>
     guessedWordsText = new Text[31];
     stage.setTitle("Boggle Game");
     shadow = new DropShadow();
-    shadow.setRadius(30);
-    shadow.setColor(Color.BLACK);
+    shadow.setRadius(40);
+    shadow.setColor(Color.SILVER);
     root = new Group();
     dictionary = new BoggleDictionary();
     newGame(boardsize);
@@ -181,7 +181,7 @@ public class BoggleGUI extends Application implements EventHandler<MouseEvent>
    */
   private void getBoardBackground()
   {
-    Image image = new Image("file:../../resources/background2.jpg",
+    Image image = new Image(getClass().getResource("resources/background2.jpg").toString(),
             DISPLAYWIDTH, DISPLAYHEIGHT, false, false);
     ImagePattern imagepattern = new ImagePattern(image);
     Rectangle background = new Rectangle(0, 0, image.getWidth(), image.getHeight());
@@ -195,7 +195,7 @@ public class BoggleGUI extends Application implements EventHandler<MouseEvent>
   private void getNewGameButtons()
   {
     newgamebuttons = new Rectangle[2];
-    Image image = new Image("file:../../resources/New4x4.png",
+    Image image = new Image(getClass().getResource("resources/New4x4.png").toString(),
             NEWGAMEBUTTONSIZE, NEWGAMEBUTTONSIZE, false, false);
     ImagePattern imagepattern = new ImagePattern(image);
     newgamebuttons[0] = new Rectangle(DISPLAYWIDTH - NEWGAMEBUTTONSIZE - 15, 30,
@@ -203,7 +203,7 @@ public class BoggleGUI extends Application implements EventHandler<MouseEvent>
     newgamebuttons[0].setFill(imagepattern);
     newgamebuttons[0].setOnMouseClicked(this);
     root.getChildren().add(newgamebuttons[0]);
-    image = new Image("file:../../resources/New5x5.png",
+    image = new Image(getClass().getResource("resources/New5x5.png").toString(),
             NEWGAMEBUTTONSIZE, NEWGAMEBUTTONSIZE, false, false);
     imagepattern = new ImagePattern(image);
     newgamebuttons[1] = new Rectangle(DISPLAYWIDTH - NEWGAMEBUTTONSIZE - 15, NEWGAMEBUTTONSIZE + 60
