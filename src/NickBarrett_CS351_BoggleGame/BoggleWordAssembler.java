@@ -1,8 +1,15 @@
 package NickBarrett_CS351_BoggleGame;
 
+/**
+ * Nicholas Barrett
+ * CS351
+ * Boggle Project
+ * boggle word builder class
+ */
+
 import java.util.ArrayDeque;
 import java.util.ArrayList;
-import java.util.Deque;
+import java.util.Arrays;
 
 public class BoggleWordAssembler
 {
@@ -13,48 +20,64 @@ public class BoggleWordAssembler
   private ArrayList<Character> word = new ArrayList<Character>();
   private ArrayDeque<Integer[]> charLocs = new ArrayDeque<>();
 
+  /**
+   * constructor which takes in the current board and its size
+   * @param board
+   * @param boardsize
+   */
   public BoggleWordAssembler(Character[][] board, int boardsize)
   {
     this.board = board;
     this.boardsize = boardsize;
   }
 
-  public boolean addChar(int row, int col)
+  /**
+   * adding the character at row,col if valid
+   * @param row
+   * @param col
+   * @return
+   */
+  public int addChar(int row, int col)
   {
     int adjcol, adjrow;
+    Integer[] tempcharloc = new Integer[]{row,col};
+    if(Arrays.equals(tempcharloc,charLocs.peekFirst())) return 1;
+    else if(charLocs.isEmpty())
+    {
+      charLocs.push(tempcharloc);
+      word.add(board[row][col]);
+      return 2;
+    }
     for(int loopone = 0; loopone < 8; loopone++)
     {
       adjrow = charLocs.peek()[0] + ROWMODS[loopone];
       adjcol = charLocs.peek()[1] + COLMODS[loopone];
-      if ((adjrow == row && adjcol == col) || charLocs.isEmpty())
+      if ((adjrow == row && adjcol == col && !charLocs.contains(tempcharloc)))
       {
-        charLocs.addFirst(new Integer[]{row,col});
+        charLocs.push(tempcharloc);
         word.add(board[row][col]);
-        return true;
+        return 2;
       }
     }
-    return false;
+    return 3;
   }
 
-  public boolean removeChar(int row, int col)
-  {
-    if(charLocs.peek()[0] == row && charLocs.peek()[1] == col)
-    {
-      charLocs.pop();
-      word.remove(word.size()-1);
-      return true;
-    }
-    return false;
-  }
-
+  /**
+   * returns the built word
+   * @return
+   */
   public ArrayList<Character> getWord()
   {
     return word;
   }
 
+  /**
+   * clears the word
+   */
   public void clearWord()
   {
     charLocs.clear();
     word.clear();
   }
+
 }

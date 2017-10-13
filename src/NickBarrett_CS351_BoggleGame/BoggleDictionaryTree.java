@@ -47,6 +47,11 @@ public class BoggleDictionaryTree
     }
   }
 
+  /**
+   * function for adding a word in string for to the dictionary
+   * @param word
+   * @param pos
+   */
   public void addWord(String word, int pos)
   {
     Character inputchar = Character.toUpperCase(word.charAt(pos));
@@ -86,7 +91,12 @@ public class BoggleDictionaryTree
   }
 
 
-
+  /**
+   * function for seeing if the data structure contains the string
+   * @param word
+   * @param pos
+   * @return
+   */
   public boolean containsWord(String word, int pos)
   {
     Character letter = Character.toUpperCase(word.charAt(pos));
@@ -102,6 +112,12 @@ public class BoggleDictionaryTree
     return false;
   }
 
+  /**
+   * checking to see if the word is present in the dictionary and whether the string can be
+   * extended to make a valid word
+   * @param word
+   * @return
+   */
   public boolean[] containsWordContinuous(Iterator<Character> word)
   {
     Character letter = Character.toUpperCase(word.next());

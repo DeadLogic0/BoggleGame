@@ -1,5 +1,12 @@
 package NickBarrett_CS351_BoggleGame;
 
+/**
+ * Nicholas Barrett
+ * CS351
+ * Boggle Project
+ * Boggle Game Board
+ */
+
 import javafx.scene.image.Image;
 import javafx.scene.shape.Rectangle;
 
@@ -21,11 +28,19 @@ public class BoggleBoard
   private Random rand = new Random();
   private ArrayList<Integer[]> qpositions = new ArrayList<>();
 
+  /**
+   * Boggle Constructor
+   * @param boardsize
+   */
   public BoggleBoard(int boardsize)
   {
    newGame(boardsize);
   }
 
+  /**
+   * creates a new board
+   * @param boardsize
+   */
   public void newGame(int boardsize)
   {
     this.boardsize = boardsize;
@@ -72,6 +87,10 @@ public class BoggleBoard
     }//end check empty if
   }//end new game method
 
+  /**
+   * returns a representation of the board as a 2d character array
+   * @return
+   */
   public Character[][] getBoard()
   {
     Character[][] returnboard = new Character[boardsize][boardsize];
@@ -85,6 +104,9 @@ public class BoggleBoard
     return returnboard;
   }
 
+  /**
+   * class for displaying the board in the command window
+   */
   public void displayBoard()
   {
     String rowstr = "";
@@ -99,6 +121,10 @@ public class BoggleBoard
     }
   }
 
+  /**
+   * returns a 2d array of rectangles representing the game board
+   * @return
+   */
   public Rectangle[][] getDisplay()
   {
     Rectangle[][] returnboard = new Rectangle[boardsize][boardsize];

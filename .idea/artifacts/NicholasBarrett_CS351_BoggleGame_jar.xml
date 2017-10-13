@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="NicholasBarrett_CS351_BoggleGame:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/NicholasBarrett_CS351_BoggleGame_jar</output-path>
+    <root id="archive" name="CS351_BoggleGame.jar">
+      <element id="dir-copy" path="$PROJECT_DIR$/src/NickBarrett_CS351_BoggleGame" />
+      <element id="dir-copy" path="$PROJECT_DIR$/resources" />
+    </root>
+  </artifact>
+</component>

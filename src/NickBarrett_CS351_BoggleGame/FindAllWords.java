@@ -1,5 +1,12 @@
 package NickBarrett_CS351_BoggleGame;
 
+/**
+ * Nicholas Barrett
+ * CS351
+ * Boggle Project
+ * Word Search class
+ */
+
 import java.util.ArrayList;
 
 public class FindAllWords
@@ -15,6 +22,12 @@ public class FindAllWords
   private boolean[][] checkedCells;
   private ArrayList<Character> word = new ArrayList<Character>();
 
+  /**
+   * class for finding all the words on a board
+   * @param dictionary reference to the dictionary
+   * @param board the board represented using characters
+   * program calls the findWords class from each possible starting point
+   */
   public FindAllWords(BoggleDictionary dictionary, Character[][] board)
   {
     this.dictionary = dictionary;
@@ -37,10 +50,14 @@ public class FindAllWords
         findWords(row,col);
       }
     }
-    System.out.println("\n count:"+count+"\n");
   }
 
-
+  /**
+   * function for finding all the words on the board recursively
+   * function only continues searching if the string can be continued into a valid word
+   * @param row current tile row position
+   * @param col current tile col position
+   */
   private void findWords(int row,int col)
   {
     word.add(charboard[row][col]);
@@ -72,9 +89,22 @@ public class FindAllWords
     word.remove(word.size()-1);
   }
 
+  /**
+   * function for checking if a word is on the board
+   * @param word
+   * @return
+   */
   public boolean containsWord(String word)
   {
     return foundWords.containsWord(word,0);
   }
 
+  /**
+   * returns the number of words found on the board
+   * @return
+   */
+  public int getNumber()
+  {
+    return count;
+  }
 }
