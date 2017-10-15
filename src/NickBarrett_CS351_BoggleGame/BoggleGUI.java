@@ -66,6 +66,7 @@ public class BoggleGUI extends Application implements EventHandler<MouseEvent>
     guessedWords = new ArrayList<>();
     guessedWordsText = new Text[31];
     stage.setTitle("Boggle Game");
+    board = new BoggleBoard(boardsize);
     shadow = new DropShadow();
     shadow.setRadius(40);
     shadow.setColor(Color.SILVER);
@@ -142,7 +143,7 @@ public class BoggleGUI extends Application implements EventHandler<MouseEvent>
     score = numFound = 0;
     guessedWords.clear();
     this.boardsize = boardsize;
-    board = new BoggleBoard(boardsize);
+    board.newGame(boardsize);
     foundWords = new BoggleDictionaryTree();
     wordbuilder = new BoggleWordAssembler(board.getBoard(), boardsize);
     findAll = new FindAllWords(dictionary, board.getBoard());

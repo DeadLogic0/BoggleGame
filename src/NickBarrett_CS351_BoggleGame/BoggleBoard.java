@@ -20,6 +20,7 @@ public class BoggleBoard
                                                        ,'Q','R','S','T','U','V','W','X','Y','Z'};
   private static final Integer[] ROWMODS = new Integer[]{-1,-1,-1,0,0,1,1,1};//{1, 2, 3; 4, #, 5; 6, 7, 8}
   private static final Integer[] COLMODS = new Integer[]{-1,0,1,-1,1,-1,0,1};
+  private TileImages images = new TileImages();
   private final int LETTERSETSIZE = LETTERSET.length;
   private final int MAXCOUNT = 4;
   private int boardsize;
@@ -45,6 +46,7 @@ public class BoggleBoard
   {
     this.boardsize = boardsize;
     board = new LetterTile[boardsize][boardsize];
+    lettercounts = new int[]{0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0,0};
     Character tempchar;
     for(int row = 0; row < boardsize; row++)
     {
@@ -133,6 +135,7 @@ public class BoggleBoard
       for(int col = 0; col < boardsize; col++)
       {
         returnboard[row][col] = board[row][col].getDisplay();
+        returnboard[row][col].setFill(images.getImage(board[row][col].getChar()));
       }
     }
     return returnboard;
