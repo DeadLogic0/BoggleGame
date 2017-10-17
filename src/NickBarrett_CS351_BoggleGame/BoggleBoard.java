@@ -16,8 +16,33 @@ import java.util.Random;
 public class BoggleBoard
 {
 
-  private final Character[] LETTERSET = new Character[]{'A','B','C','D','E','F','G','H','I','J','K','L','M','N','O','P'
-                                                       ,'Q','R','S','T','U','V','W','X','Y','Z'};
+  private final Character[] LETTERSET = new Character[]{
+          'A','A','A','A','A','A','A','A',
+          'B','B',
+          'C','C','C',
+          'D','D','D','D',
+          'E','E','E','E','E','E','E','E','E','E','E','E',
+          'F','F',
+          'G','G',
+          'H','H','H','H','H','H',
+          'I','I','I','I','I','I','I',
+          'J',
+          'K',
+          'L','L','L','L',
+          'M','M','M',
+          'N','N','N','N','N','N','N',
+          'O','O','O','O','O','O','O','O',
+          'P','P',
+          'Q',
+          'R','R','R','R','R','R',
+          'S','S','S','S','S','S','S',
+          'T','T','T','T','T','T','T','T','T',
+          'U','U','U',
+          'V',
+          'W','W',
+          'X',
+          'Y','Y',
+          'Z'};
   private static final Integer[] ROWMODS = new Integer[]{-1,-1,-1,0,0,1,1,1};//{1, 2, 3; 4, #, 5; 6, 7, 8}
   private static final Integer[] COLMODS = new Integer[]{-1,0,1,-1,1,-1,0,1};
   private TileImages images = new TileImages();
